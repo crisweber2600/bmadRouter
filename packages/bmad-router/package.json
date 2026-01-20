@@ -4,6 +4,20 @@
   "description": "BMAD-aware model router for OpenCode - automatically routes models based on workflow phase while preserving agent selection",
   "type": "module",
   "main": "index.ts",
+  "bin": {
+    "bmad-router": "./cli.ts"
+  },
+  "files": [
+    "index.ts",
+    "cli.ts",
+    "router.ts",
+    "workflow.ts",
+    "types.ts",
+    "quota.ts",
+    "rules.ts",
+    "package.json",
+    "README.md"
+  ],
   "keywords": [
     "opencode",
     "opencode-plugin",
@@ -17,6 +31,9 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/bmad/bmad-router"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "dependencies": {
     "js-yaml": "^4.1.0",

@@ -72,7 +72,7 @@ export class NotDiamondRouter {
       try {
         const result = await this.client.modelRouter.selectModel({
           messages: [{ role: 'user', content: messageContext }],
-          llmProviders: ndCandidates,
+          llm_providers: ndCandidates,
           tradeoff,
         });
 

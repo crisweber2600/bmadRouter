@@ -7,10 +7,10 @@ import { filterCandidatesByQuota, getCopilotQuota } from './quota';
 import { routeModel } from './router';
 
 const DEFAULT_CANDIDATES: LLMProvider[] = [
-  { provider: 'anthropic', model: 'claude-sonnet-4-20250514' },
-  { provider: 'openai', model: 'gpt-4.1-2025-04-14' },
-  { provider: 'github-copilot', model: 'claude-sonnet-4' },
-  { provider: 'github-copilot', model: 'gpt-4.1' },
+  { provider: 'anthropic', model: 'claude-sonnet-4-5-20250929' },
+  { provider: 'openai', model: 'gpt-4o' },
+  { provider: 'github-copilot', model: 'gpt-4o' },
+  { provider: 'github-copilot', model: 'gpt-4o' },
 ];
 
 const KEEP_MODEL_PATTERNS = [/^!km\b/i, /^!keep-model\b/i];

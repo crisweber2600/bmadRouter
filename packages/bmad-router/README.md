@@ -13,29 +13,34 @@ BMAD-aware model router plugin for OpenCode. Automatically routes models based o
 
 ## Installation
 
-### Option 1: Local Plugin (Recommended)
-
-Copy the plugin to your project's `.opencode/plugins/` directory:
+### Option 1: npx (Recommended)
 
 ```bash
-mkdir -p .opencode/plugins/bmad-router
-cp -r packages/bmad-router/* .opencode/plugins/bmad-router/
-cd .opencode/plugins/bmad-router && bun install
+npx bmad-router ~/myproject
+npx bmad-router -k sk-xxx ~/myproject          # with API key
+npx bmad-router -k sk-xxx -g ~/myproject       # API key in ~/.bashrc
 ```
 
-Add to your project's `opencode.json`:
-
-```json
-{
-  "plugin": ["bmad-router"]
-}
-```
-
-### Option 2: Global Installation
+### Option 2: Global Install
 
 ```bash
-# Coming soon: npm install -g bmad-router
+npm install -g bmad-router
+bmad-router ~/myproject
 ```
+
+### Option 3: Manual
+
+```bash
+git clone https://github.com/bmad/bmad-router
+cd bmad-router
+./install-bmad-router.sh ~/myproject
+```
+
+The installer:
+1. Copies plugin files to `.opencode/plugins/bmad-router/`
+2. Installs dependencies (bun or npm)
+3. Adds `"bmad-router"` to your `opencode.json`
+4. Optionally sets `NOTDIAMOND_API_KEY`
 
 ## Configuration
 
