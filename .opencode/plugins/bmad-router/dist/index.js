@@ -16733,13 +16733,13 @@ class NotDiamondRouter {
       } catch (err) {
         clearTimeout(timeoutId);
         if (err.name === "AbortError") {
-          console.warn("[bmad-router] NotDiamond API timeout, using fallback");
+          
         } else {
-          console.warn("[bmad-router] NotDiamond API error:", err);
+          
         }
       }
     } catch (err) {
-      console.warn("[bmad-router] NotDiamond routing failed:", err);
+      
     }
     return candidates[0];
   }
@@ -16797,7 +16797,7 @@ var BmadRouterPlugin = async ({ client, directory }) => {
       candidates = await filterCandidatesByQuota(candidates);
       const copilotFiltered = candidates.length < candidatesBeforeQuota;
       if (candidates.length === 0) {
-        console.warn("[bmad-router] No candidates available after filtering");
+        
         return;
       }
       const selected = await routeModel(candidates, output.parts);
@@ -16806,7 +16806,7 @@ var BmadRouterPlugin = async ({ client, directory }) => {
         modelID: selected.model
       };
       const reason = buildRouteReason(phase, selected, copilotFiltered);
-      console.log(`[bmad-router] Routed: ${reason}`);
+      
       try {
         await client.event.publish({
           type: "tui.toast.show",

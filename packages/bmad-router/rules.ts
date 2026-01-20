@@ -33,7 +33,7 @@ export function filterCandidatesByPhase(
   candidates: LLMProvider[],
   phase: BmadPhase
 ): LLMProvider[] {
-  if (isDevPhase(phase)) {
+  if (isDevPhase(phase) || phase === 'unknown') {
     return candidates;
   }
   return candidates.filter(c => !isCopilotProvider(c.provider));

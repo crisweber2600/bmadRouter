@@ -70,11 +70,15 @@ export class NotDiamondRouter {
       const timeoutId = setTimeout(() => controller.abort(), this.timeoutMs);
 
       try {
-        const result = await this.client.modelRouter.selectModel({
+        // Only include tradeoff if it's cost or latency (quality is default when omitted)
+        const params: Parameters<typeof this.client.modelRouter.selectModel>[0] = {
           messages: [{ role: 'user', content: messageContext }],
-          llmProviders: ndCandidates,
-          tradeoff,
-        });
+          llm_providers: ndCandidates,
+        };
+        if (tradeoff && tradeoff !== 'quality') {
+          params.tradeoff = tradeoff;
+        }
+        const result = await this.client.modelRouter.selectModel(params);
 
         clearTimeout(timeoutId);
 
@@ -88,13 +92,10 @@ export class NotDiamondRouter {
       } catch (err) {
         clearTimeout(timeoutId);
         if ((err as Error).name === 'AbortError') {
-          console.warn('[bmad-router] NotDiamond API timeout, using fallback');
         } else {
-          console.warn('[bmad-router] NotDiamond API error:', err);
         }
       }
     } catch (err) {
-      console.warn('[bmad-router] NotDiamond routing failed:', err);
     }
 
     return candidates[0];
