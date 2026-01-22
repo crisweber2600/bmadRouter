@@ -39,13 +39,16 @@ export interface LLMResponse {
   };
 }
 
+export type DecisionPath = 'heuristic' | 'cascade' | 'consensus' | 'semantic_agreement' | 'override' | 'fallback' | 'bypass' | 'cascade_fallback';
+export type ProviderName = 'openai' | 'anthropic' | 'google';
+
 export interface RoutingDecision {
   requestId?: string;
   timestamp?: Date;
   selectedTier: ModelTier;
   selectedModel: string;
-  selectedProvider?: 'openai' | 'anthropic' | 'google';
-  decisionPath: 'heuristic' | 'semantic_agreement' | 'override' | 'fallback';
+  selectedProvider?: ProviderName;
+  decisionPath: DecisionPath;
   confidence: number;
   costSavings?: number;
   processingTimeMs?: number;

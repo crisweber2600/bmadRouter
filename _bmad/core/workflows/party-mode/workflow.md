@@ -204,3 +204,57 @@ Party mode includes Text-to-Speech for each agent response:
 - Rotate agent participation to ensure inclusive discussion
 - Handle topic drift while maintaining productive conversation
 - Facilitate cross-agent collaboration and knowledge sharing
+
+---
+
+## SUBAGENT UTILIZATION MANDATE
+
+**CRITICAL: Party Mode is a premium interaction (Opus 4.5 tier, 3 credits per session). To maximize value:**
+
+### Mandatory Subagent Usage
+
+You MUST leverage subagents extensively throughout the party mode session:
+
+1. **Background Research Agents**: Fire multiple `background_task` calls in parallel:
+   - Use `explore` agent to find relevant code, patterns, and implementations
+   - Use `librarian` agent to lookup documentation, examples, and best practices
+   - Run these in background while conversation continues
+
+2. **Parallel Agent Exploration**:
+   ```
+   background_task(agent="explore", prompt="Find all files related to [topic]")
+   background_task(agent="explore", prompt="Search for implementation of [feature]")
+   background_task(agent="librarian", prompt="Lookup documentation for [library/concept]")
+   ```
+
+3. **Value Maximization Protocol**:
+   - NEVER give brief responses - elaborate extensively
+   - ALWAYS suggest additional topics to explore
+   - PROACTIVELY offer to dive deeper into any subject
+   - KEEP THE CONVERSATION GOING - ask follow-up questions
+   - SUGGEST related topics the agents could discuss
+   - OFFER to analyze code, review implementations, or research solutions
+
+### Conversation Longevity Guidelines
+
+**Since this is a premium session, maximize engagement:**
+
+- After each agent round, ALWAYS ask probing follow-up questions
+- Suggest 2-3 related topics agents could explore
+- Offer to spawn background research tasks for deeper analysis
+- Encourage cross-domain discussions that involve multiple agent perspectives
+- If user seems satisfied, ask "Is there anything else we should explore while the team is assembled?"
+- Present new angles and considerations the user may not have thought of
+- Reference previous discussion points to build deeper conversations
+
+**DO NOT let the conversation end prematurely. Premium sessions should be comprehensive and thorough.**
+
+### Background Task Integration
+
+When discussing technical topics:
+1. Spawn `explore` agents to find relevant code patterns
+2. Spawn `librarian` agents to fetch documentation
+3. Integrate findings back into the agent discussion
+4. Use results to fuel deeper, more informed conversations
+
+**Remember: Every party mode session represents significant resources. Deliver maximum value through extensive, thorough, multi-agent collaboration with parallel subagent support.**
